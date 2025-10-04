@@ -8,6 +8,10 @@ class TributeMessage(models.Model):
     created = models.DateField(auto_now_add=True)
 
 
+    class Meta:
+        ordering = ['-created']
+
+
     def __str__(self):
         return self.name
 
