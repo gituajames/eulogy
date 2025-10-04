@@ -4,11 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if name %}
-    <title> Thank you {{ name }}</title>
-    {% else %}
-    <title>Thanks</title>
-    {% endif %}
+    <title>Tributes</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -30,29 +26,39 @@
                 </ul>
             </nav>
         </div>
-        {% if name %}
         <div class="hero-content">
-            <p class="welcome-text">Our Deepest appreciation</p>
-            <h2>{{ name }}</h2>
-            <p class="dates">for taking the time to celebrate the life of JAMES GITUA NJUGUNA</p>
+            <p class="welcome-text">In Loving Memory of</p>
+            <h2>JAMES GITUA NJUGUNA</h2>
+            <p class="dates">1944 - 27/09/2025</p>
         </div>
-        {% endif %}
     </header>
 
-    
+    <main>
+        <section id="tributes" class="section tributes-section">
+            <h2>Tributes</h2>
+            <div class="tributes-list">
+                {% if tributes %}
+                {% for tribute in page_obj %}
+                <div class="tribute-post">
+                    <p class="post-text">"{{ tribute.text }}"</p>
+                    <p class="post-meta">— {{ tribute.name }}., {{ tribute.created }}</p>
+                </div>
+                {% endfor %}
 
-                <blockquote class="quote">
-                    Ni Mwathani wamuheanire James Gitua Njuguna na nowe
-                    wamuchokera, ritwa riake rigochwo.
-                </blockquote>
-
-
-           
+                {% else %}
+                <div class="tribute-post">
+                    <p class="post-text">no tributes yet</p>
+                </div>
+                {% endif %}
+            </div>
+            {% include 'pagination.html' %}
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
             <p><strong>A Permanent Place to Remember.</strong></p>
-            <p>For inquiries, please email: <a href="mailto:familycontact@email.com">familycontact@email.com</a></p>
+            <p>For inquiries, please email: <a href="mailto:gitua85@gmail.com">gitua85@gmail.com</a></p>
             <p class="copyright">&copy; 2025 The GITUA'S Family. Site created by nyandaruaicthub@gmail.com.</p>
         </div>
     </footer>

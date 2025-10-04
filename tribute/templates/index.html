@@ -17,10 +17,10 @@
             <nav id="main-nav">
                 <i class="fa fa-bars menu-icon" onclick="toggleMenu()"></i>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="#story">Life Story</a></li>
                     <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#tributes">Tributes</a></li>
+                    <li><a href="{% url 'tributes' %}">Tributes</a></li>
                     <li><a href="#service">Service Info</a></li>
                     <li><a href="{% static 'ASSETS/jamesgitua.pdf' %}" download="James Gitua Njuguna">Downloads</a></li>
                 </ul>
@@ -69,11 +69,11 @@
                     mwaminifu hadi kifo chake.
                 </p>
 
-                <h3>UGOJWA</h3>
+                <h3>UGONJWA</h3>
                 <p>
-                    Jumamosi tarehe 27/9/2025, marehemu aliuugua na dakaktai alikuja
+                    Jumamosi tarehe 27/9/2025, marehemu aliuugua na daktari alikuja
                     nyumbani na akamtibu. Siku ya Jumatatu (29/9/2025) alizidiwa na
-                    akapelekwa katika hopsipitali ya
+                    akapelekwa katika hosipitali ya
                     PGH Nakuru, ambapo Mungu
                     alimpumzisha.
                     Ameacha bibi yake Mary Wambui, watoto wake, wajukuu na vitukuu.
@@ -121,17 +121,18 @@
                 <p>
                     Akoretwo ari murumiriri wa kanitha wa Catholic, Niabatithirio
                     kanithaini wa Catholic wa Karinga mwakaini wa 1957. Arari
-                    murumiriri murumu ginya kuhiruka gwake.
+                    murumiriri murumu ginya kuhuruka gwake.
                 </p>
 
                 <h3>NDWARI</h3>
                 <p>
                     Kwi muthenya wa jumamothi 27/9/2025, mutigairi niaiguire uru mwiri
-                    na dagitari agiuka mucii na akimumuthondeka, Kwi muthenya wa
+                    na dagitari agiuka mucii na akimuthondeka, Kwi muthenya wa
                     jumatatu, (29/9/2025) mutigaire ni ehirwo ni mwiri na agitwaruwo
                     thibitari-ini wa PGH nakuru, Kuria ahurokirio ni Mwathani.
-                    Niatiga mutumia wake Mary Wambui, ciana ciake tucucu na
-                    tucukuru, Arahurukire ari na ukuru wa miaka 81.
+                    Niatiga mutumia wake Mary Wambui, ciana ciake, tucucu na
+                    tucukuru. 
+                    <p>Arahurukire ari na ukuru wa miaka 81.</p>
                 </p>
 
                 <blockquote class="quote">
@@ -187,16 +188,12 @@
         <section id="tributes" class="section tributes-section">
             <h2>Share a Memory or Condolence</h2>
     
-            <form action="{% url 'index' %}" class="tribute-form" method="post">
+            <form action="" class="tribute-form" method="post">
 
                 {% csrf_token %}
                 {{ form.name }}
                 {{ form.email }}
                 {{ form.text }}
-                
-                <!-- <input type="text" placeholder="{{ form.name.label_tag }}" required>
-                <input type="email" placeholder="Your Email (Optional)">
-                <textarea placeholder="Your cherished memory or condolence..." rows="5" required></textarea> -->
                 <button type="submit" class="cta-button primary-button">Post Tribute</button>
             </form>
 
@@ -223,7 +220,7 @@
     <footer>
         <div class="footer-content">
             <p><strong>A Permanent Place to Remember.</strong></p>
-            <p>For inquiries, please email: <a href="mailto:familycontact@email.com">familycontact@email.com</a></p>
+            <p>For inquiries, please email: <a href="mailto:gitua85@gmail.com">gitua85@gmail.com</a></p>
             <p class="copyright">&copy; 2025 The GITUA'S Family. Site created by nyandaruaicthub@gmail.com.</p>
         </div>
     </footer>

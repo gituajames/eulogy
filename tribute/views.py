@@ -1,11 +1,11 @@
-
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from . models import TributeMessage
 from . forms import TributeForm
 
-
+@csrf_exempt
 def index(request):
     tributes = TributeMessage.objects.all()
 
@@ -46,5 +46,26 @@ def index(request):
         'form' : form
     }
     return render(request, 'index.html', context=context)
+
+
+def tributes(request):
+    tributes = TributeMessage.objects.all()
+
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(tributes, 8)
+
+    try:
+        page_obj = paginator.page(page_num)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+
+    context = {
+        'tributes': tributes,
+        'page_obj': page_obj,
+    }
+    return render(request, 'tributes.html', context=context)
 
 # Create your views here.
