@@ -1,0 +1,395 @@
+/* --- 1. Global Styles and Typography (Mobile-First) --- */
+:root {
+    --color-primary: #37474F; /* Dark Slate Grey for text/accents */
+    --color-secondary: #B0BEC5; /* Light Grey for borders/dividers */
+    --color-background: #FAFAFA; /* Very light background */
+    --color-text: #424242; /* Darker grey for body text */
+    --color-accent: #8e7d58; /* Gold/Bronze for emphasis */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+h2, h3 {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* --- 2. Navigation and Header (Responsive) --- */
+.hero-section {
+    background-image: url('placeholder-hero.jpg'); /* Replace with a real photo */
+    background-size: cover;
+    background-position: center 30%;
+    min-height: 80vh; /* Responsive height */
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Soft overlay for text visibility */
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Darkens the image slightly */
+    z-index: -1;
+}
+
+.nav-bar {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.5em;
+    color: white;
+}
+
+/* Mobile Navigation */
+.menu-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+    display: block; /* Always visible on mobile */
+}
+
+.nav-links {
+    list-style: none;
+    background-color: var(--color-primary); /* Menu background on mobile */
+    position: absolute;
+    top: 60px; /* Position below the header */
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 0;
+    display: none; /* Hidden by default on mobile */
+    z-index: 10;
+}
+
+.nav-links.active {
+    display: flex; /* Shown when menu is toggled */
+}
+
+.nav-links li a {
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-content {
+    padding: 20px;
+    margin-bottom: 150px;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    margin: 0.2em 0;
+    color: white;
+}
+
+.dates {
+    font-size: 1.2em;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- 3. Main Sections (Responsive Padding/Layout) --- */
+.section {
+    padding: 40px 5%; /* Responsive horizontal padding */
+    margin: 20px 0;
+    text-align: center;
+}
+
+.story-section {
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: left;
+    padding: 40px 5%;
+}
+
+.eulogy-content p {
+    margin-bottom: 1.5em;
+}
+
+.family-message {
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.quote {
+    font-family: var(--font-serif);
+    font-size: 1.2em;
+    font-style: italic;
+    border-left: 5px solid var(--color-accent);
+    padding-left: 15px;
+    margin: 2em 0;
+    color: var(--color-primary);
+}
+
+/* --- 4. Gallery Section (Responsive Grid) --- */
+.gallery-section {
+    background-color: #F5F5F5;
+}
+
+.photo-grid {
+    display: grid;
+    /* Mobile: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 150px; /* Uniform height for grid aesthetic */
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+.video-item {
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.video-item a {
+    color: white;
+    font-size: 1.1em;
+}
+
+.video-item i {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+/* --- 5. Service Details (Responsive Layout) --- */
+.service-details-container {
+    display: flex;
+    flex-direction: column; /* Stacks blocks on mobile */
+    gap: 30px;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.key-detail {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.donation-note {
+    font-style: italic;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* --- 6. Tributes & Form (Responsive Input) --- */
+.tributes-section {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tribute-form input[type="text"],
+.tribute-form input[type="email"],
+.tribute-form textarea {
+    width: 100%; /* Full width on mobile */
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 5px;
+    font-family: var(--font-sans);
+}
+
+.tributes-list {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.tribute-post {
+    border: 1px solid #EEEEEE;
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.post-text {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #9E9E9E;
+    text-align: right;
+}
+
+/* --- 7. Buttons and CTAs --- */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.primary-button {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #546E7A;
+}
+
+.secondary-button {
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.secondary-button:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* --- 8. Footer --- */
+footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 20px 5%;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--color-secondary);
+}
+
+.copyright {
+    margin-top: 10px;
+}
+
+/* ==================================== */
+/* --- 9. MEDIA QUERIES (Responsiveness) --- */
+/* ==================================== */
+
+/* Tablet View (e.g., min-width 768px) */
+@media (min-width: 768px) {
+    /* Navigation - switches to horizontal */
+    .menu-icon {
+        display: none; /* Hide hamburger on wider screens */
+    }
+
+    .nav-links {
+        position: static;
+        flex-direction: row;
+        background: none;
+        display: flex !important; /* Force display on desktop */
+        align-items: center;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-left: 20px;
+    }
+
+    .nav-links li a {
+        padding: 5px 10px;
+        border-bottom: none;
+        color: white;
+        transition: color 0.3s;
+    }
+    
+    .nav-links li a:hover {
+        color: var(--color-accent);
+    }
+
+    /* Gallery - switches to 3 columns */
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Service Details - switches to side-by-side */
+    .service-details-container {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .detail-block, .map-container {
+        flex: 1;
+    }
+}
+
+/* Desktop View (e.g., min-width 1024px) */
+@media (min-width: 1024px) {
+    /* Header/Hero - larger text */
+    .hero-content h2 {
+        font-size: 4.5em;
+    }
+
+    /* Gallery - switches to 4 columns */
+    .photo-grid {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1100px;
+        margin: 30px auto;
+    }
+    
+    .gallery-item img, .video-item {
+        height: 200px; /* Slightly larger image boxes */
+    }
+}
