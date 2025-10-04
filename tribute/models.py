@@ -5,7 +5,7 @@ class TributeMessage(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
     text = models.TextField()
-    created = models.DateField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
 
 
     class Meta:
